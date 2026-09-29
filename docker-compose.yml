@@ -1,0 +1,9 @@
+services:
+  ui:
+    build: .
+    environment: { SERVICE: ui, PORT: "8501", ANTHROPIC_API_KEY: "${ANTHROPIC_API_KEY:-}" }
+    ports: ["8501:8501"]
+  api:
+    build: .
+    environment: { SERVICE: api, PORT: "8000", ANTHROPIC_API_KEY: "${ANTHROPIC_API_KEY:-}" }
+    ports: ["8000:8000"]

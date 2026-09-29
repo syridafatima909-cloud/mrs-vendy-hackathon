@@ -1,0 +1,17 @@
+# One-click Render blueprint: New > Blueprint > point at this repo.
+services:
+  - type: web
+    name: vendgen-ui
+    runtime: docker
+    plan: free
+    envVars:
+      - { key: SERVICE, value: ui }
+      - { key: ANTHROPIC_API_KEY, sync: false }
+  - type: web
+    name: vendgen-api
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - { key: SERVICE, value: api }
+      - { key: ANTHROPIC_API_KEY, sync: false }
